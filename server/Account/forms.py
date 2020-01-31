@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Account
-from Image.models import Image
+# from Image.models import Image
 
 
 class AccountLoginForm(AuthenticationForm):
