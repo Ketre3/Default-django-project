@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+
+  proxy:
+    restart: always
+    build: ./nginx
+    expose:
+      - 8080
+    ports:
+      - "80:8080"
+    volumes:
+      - static:/static
+      - media:/media
+    networks:
+      - frontend
+    depends_on:
+      - server
+
+  cache:
+    image: memcached
+    ports:
+      - "11212:11212"
+    entrypoint:
+      - memcached
+      - m 256
+    networks:
+      - backend
+
+  db:
+    image: postgres:latest
+    networks:
+      - backend
+
+  server:
+    build: ./server
+    restart: always
+    depends_on:
+      - db
+      - cache
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - ./server:/app
+      - static:/app/static
+      - media:/app/media
+    ports:
+      - 8000:8000
+
+volumes:
+  media:
+  static:
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge

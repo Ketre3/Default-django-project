@@ -1,0 +1,95 @@
+/	django.views.generic.base.RedirectView
+/__debug__/render_panel/	debug_toolbar.views.render_panel	djdt:render_panel
+/__debug__/sql_explain/	debug_toolbar.panels.sql.views.sql_explain	djdt:sql_explain
+/__debug__/sql_profile/	debug_toolbar.panels.sql.views.sql_profile	djdt:sql_profile
+/__debug__/sql_select/	debug_toolbar.panels.sql.views.sql_select	djdt:sql_select
+/__debug__/template_source/	debug_toolbar.panels.templates.views.template_source	djdt:template_source
+
+
+/account/	Account.views.UserInfo	account:info
+/account/confirm/<int:pk>	Account.views.confirm_account	account:confirm
+/account/login/	Account.views.Login	account:login
+/account/logout/	Account.views.Logout	account:logout
+/account/register/	Account.views.RegisterView	account:register
+
+
+/admin/	django.contrib.admin.sites.index	admin:index
+/admin/<app_label>/	django.contrib.admin.sites.app_index	admin:app_list
+/admin/Cart/purchase/	django.contrib.admin.options.changelist_view	admin:Cart_purchase_changelist
+/admin/Cart/purchase/<path:object_id>/	django.views.generic.base.RedirectView
+/admin/Cart/purchase/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:Cart_purchase_change
+/admin/Cart/purchase/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:Cart_purchase_delete
+/admin/Cart/purchase/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:Cart_purchase_history
+/admin/Cart/purchase/add/	django.contrib.admin.options.add_view	admin:Cart_purchase_add
+/admin/Cart/purchase/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:Cart_purchase_autocomplete
+/admin/Image/image/	django.contrib.admin.options.changelist_view	admin:Image_image_changelist
+/admin/Image/image/<path:object_id>/	django.views.generic.base.RedirectView
+/admin/Image/image/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:Image_image_change
+/admin/Image/image/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:Image_image_delete
+/admin/Image/image/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:Image_image_history
+/admin/Image/image/add/	django.contrib.admin.options.add_view	admin:Image_image_add
+/admin/Image/image/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:Image_image_autocomplete
+/admin/Product/product/	django.contrib.admin.options.changelist_view	admin:Product_product_changelist
+/admin/Product/product/<path:object_id>/	django.views.generic.base.RedirectView
+/admin/Product/product/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:Product_product_change
+/admin/Product/product/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:Product_product_delete
+/admin/Product/product/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:Product_product_history
+/admin/Product/product/add/	django.contrib.admin.options.add_view	admin:Product_product_add
+/admin/Product/product/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:Product_product_autocomplete
+/admin/Product/productstyle/	django.contrib.admin.options.changelist_view	admin:Product_productstyle_changelist
+/admin/Product/productstyle/<path:object_id>/	django.views.generic.base.RedirectView
+/admin/Product/productstyle/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:Product_productstyle_change
+/admin/Product/productstyle/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:Product_productstyle_delete
+/admin/Product/productstyle/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:Product_productstyle_history
+/admin/Product/productstyle/add/	django.contrib.admin.options.add_view	admin:Product_productstyle_add
+/admin/Product/productstyle/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:Product_productstyle_autocomplete
+/admin/Product/producttrend/	django.contrib.admin.options.changelist_view	admin:Product_producttrend_changelist
+/admin/Product/producttrend/<path:object_id>/	django.views.generic.base.RedirectView
+/admin/Product/producttrend/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:Product_producttrend_change
+/admin/Product/producttrend/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:Product_producttrend_delete
+/admin/Product/producttrend/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:Product_producttrend_history
+/admin/Product/producttrend/add/	django.contrib.admin.options.add_view	admin:Product_producttrend_add
+/admin/Product/producttrend/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:Product_producttrend_autocomplete
+/admin/Product/producttype/	django.contrib.admin.options.changelist_view	admin:Product_producttype_changelist
+/admin/Product/producttype/<path:object_id>/	django.views.generic.base.RedirectView
+/admin/Product/producttype/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:Product_producttype_change
+/admin/Product/producttype/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:Product_producttype_delete
+/admin/Product/producttype/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:Product_producttype_history
+/admin/Product/producttype/add/	django.contrib.admin.options.add_view	admin:Product_producttype_add
+/admin/Product/producttype/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:Product_producttype_autocomplete
+/admin/auth/group/	django.contrib.admin.options.changelist_view	admin:auth_group_changelist
+/admin/auth/group/<path:object_id>/	django.views.generic.base.RedirectView
+/admin/auth/group/<path:object_id>/change/	django.contrib.admin.options.change_view	admin:auth_group_change
+/admin/auth/group/<path:object_id>/delete/	django.contrib.admin.options.delete_view	admin:auth_group_delete
+/admin/auth/group/<path:object_id>/history/	django.contrib.admin.options.history_view	admin:auth_group_history
+/admin/auth/group/add/	django.contrib.admin.options.add_view	admin:auth_group_add
+/admin/auth/group/autocomplete/	django.contrib.admin.options.autocomplete_view	admin:auth_group_autocomplete
+/admin/jsi18n/	django.contrib.admin.sites.i18n_javascript	admin:jsi18n
+/admin/login/	django.contrib.admin.sites.login	admin:login
+/admin/logout/	django.contrib.admin.sites.logout	admin:logout
+/admin/password_change/	django.contrib.admin.sites.password_change	admin:password_change
+/admin/password_change/done/	django.contrib.admin.sites.password_change_done	admin:password_change_done
+/admin/r/<int:content_type_id>/<path:object_id>/	django.contrib.contenttypes.views.shortcut	admin:view_on_site
+
+
+/api/cart/active/	Cart.api.api.ActivePurchaseView	cart_api:active
+/api/cart/add/	Cart.api.api.AddItemPurchaseView	cart_api:add
+/api/cart/all/	Cart.api.api.AllPurchasesView	cart_api:all
+/api/cart/delete/	Cart.api.api.DeleteItemPurchaseView	cart_api:delete
+/api/cart/total/	Cart.api.api.TotalPurchaseView	cart_api:total
+
+
+/cart/	Cart.views.cart_view	cart:cart
+/cart/confirm/	Cart.views.purchase_confirm_view	cart:confirm
+
+
+/media/<path>	django.views.static.serve
+
+
+/product/	Product.views.lists.ProductWithProductTypeListView	product:all-with-type
+/product/<int:pk>	Product.views.CRUD.ProductDetailView	product:detail
+/product/create/	Product.views.CRUD.ProductCreateView	product:create
+/product/delete/<int:pk>	Product.views.CRUD.ProductDeleteView	product:delete
+/product/index/	Product.views.lists.ProductStyleView	product:all
+/product/search/	Product.views.lists.SearchListView	product:search
+/product/update/<int:pk>	Product.views.CRUD.ProductUpdateView	product:update

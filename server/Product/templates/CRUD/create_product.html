@@ -1,0 +1,21 @@
+{% extends 'base/master.html' %}
+{% load static %}
+
+{% block page_title %}
+    Create product
+{% endblock %}
+
+{% block page_style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% include 'base/form.html' %}
+
+{% block page_content %}
+    <div style="background-color: #ffffff">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_ul }}
+            <input type="submit" value="Create product">
+    </form>
+    </div>
+{% endblock %}

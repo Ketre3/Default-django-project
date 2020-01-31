@@ -1,0 +1,117 @@
+{% extends 'base/master.html' %}
+{% load static %}
+{% load utility %}
+
+{% block page_title %}
+    INDEX
+{% endblock %}
+
+{% block page_style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+
+  {% comment %}
+
+        <div class="slider_image">
+            <div class="slider_text">
+                <h2>Official style</h2>
+                <p>New collection</p>
+                <h3>Winter 2020</h3>
+            </div>
+        </div>
+        {% endcomment %}
+
+        <div class="slider">
+            <div class="autumn_text">
+                <h2>{{ style }}</h2>
+                <h3>Lorem - ipsum dolor sit amet, consectetur adipisicing elit.
+                  Doloremque saepe veritatis dolores,
+                  illum, sed voluptatem?
+                  Ipsam impedit dignissimos, animi inventore.</h3>
+            </div>
+        </div>
+
+        {% if not products|index:4 %}
+          <h1 style="color: white">THERE'RE SHOULD BE 5 PRODUCTS! ADD PRODUCTS TO {{ style }} STYLE OR CHANGE STYLE ITSELF</h1>
+          {% else %}
+
+                  <div class="five_images">
+                      <div class="two_first_imgs">
+                        {% with product0=products|index:0 product1=products|index:1 %}
+                        <div class="item0_first zoom" style="background-image: url('{{ product0.image.url }}')">
+                          <a href="{{ product0.get_absolute_url }}" class="text">{{ style }}</a>
+                        </div>
+
+                        <div class="item0_second zoom" style="background-image: url('{{ product0.image.url }}')">
+                          <a href="{{ product1.get_absolute_url }}" class="text">{{ style }}</a>
+                        </div>
+                        {% endwith %}
+                      </div>
+
+                      <div class="three_second_imgs">
+                        {% with product2=products|index:2 product3=products|index:3 product4=products|index:4 %}
+                          <div class="item1 zoom" style="background-image: url('{{ product2.image.url }}')">
+                            <a href="{{ product2.get_absolute_url }}" class="text">{{ style }}</a>
+                          </div>
+                          <div class="item1 zoom" style="background-image: url('{{ product3.image.url }}')">
+                            <a href="{{ product3.get_absolute_url }}" class="text">{{ style }}</a>
+                          </div>
+                          <div class="item2 zoom" style="background-image: url('{{ product4.image.url }}')">
+                            <a href="{{ product4.get_absolute_url }}" class="text">{{ style }}</a>
+                          </div>
+                        {% endwith %}
+                      </div>
+                  </div>
+
+
+
+                  {% comment %}
+
+                  <div class="slider_image_2">
+                      <div class="slider_text_2">
+                          <h2>Summer 2020 | In Culture</h2>
+                          <h3>Collection of winner</h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque dolorem at delectus ullam, qui nostrum. Quasi vel est, ipsum necessitatibus.</p>
+                          <p class="parag"> Distinctio saepe perferendis, natus facilis harum et dolores illo, similique quibusdam commodi nam, nihil doloremque! Delectus saepe, reprehenderit perspiciatis aliquid!</p>
+                          <a href="#">Collection's site</a>
+                      </div>
+                  </div>
+                  {% endcomment %}
+
+
+
+
+                  <div class="text_make">
+                      <h2>all our production is under strict control</h2>
+                  </div>
+                  {% comment %}
+
+
+                  <div class="making">
+                      <div class="make_block num_first no_repeat">
+                          <h2>All our compaign</h2>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dicta suscipit laudantium sit vero maxime, sed atque ratione architecto. Laboriosam, dolorum, deleniti? Mollitia harum architecto tenetur veritatis illum quae repellat.</p>
+                      </div>
+                      <div class="make_block num_second no_repeat">
+                          <h2>All our compaign</h2>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dicta suscipit laudantium sit vero maxime, sed atque ratione architecto. Laboriosam, dolorum, deleniti? Mollitia harum architecto tenetur veritatis illum quae repellat.</p>
+                      </div>
+                      <div class="make_block num_third no_repeat">
+                          <h2>All our compaign</h2>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dicta suscipit laudantium sit vero maxime, sed atque ratione architecto. Laboriosam, dolorum, deleniti? Mollitia harum architecto tenetur veritatis illum quae repellat.</p>
+                      </div>
+                      <div class="make_block num_fourgh no_repeat">
+                          <h2>All our compaign</h2>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dicta suscipit laudantium sit vero maxime, sed atque ratione architecto. Laboriosam, dolorum, deleniti? Mollitia harum architecto tenetur veritatis illum quae repellat.</p>
+                      </div>
+
+
+              </div>
+              {% endcomment %}
+        {% endif %}
+
+
+{% endblock %}

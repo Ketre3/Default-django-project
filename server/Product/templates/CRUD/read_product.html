@@ -1,0 +1,81 @@
+{% extends 'base/master.html' %}
+{% load static %}
+{% load utility %}
+
+{% block page_title %}
+    PRODUCT
+{% endblock %}
+
+{% block page_style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/cart.js' %}" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700"
+    rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+
+        <header class="second_header">
+            <ul>
+                {% for catalog in catalogs %}
+                  <li><a href="{% url 'product:all-with-type' %}?search=catalog">
+                    {{ catalog }}</a></li>
+                {% endfor %}
+            </ul>
+        </header>
+
+        <div class="big_review">
+            <div class="review_product">
+                <div class="images">
+                    <div class="small_images">
+                        <img src="{{ product.image.url }}" alt="Blazer">
+                        <img src="{{ product.image.url }}" alt="Zoom blazer">
+                        <img src="{{ product.image.url }}" alt="Back blazer">
+                    </div>
+                    <div class="main_image">
+                        <img src="{{ product.image.url }}" alt="Main photo blazer">
+                    </div>
+                </div>
+
+                <div class="product_content">
+
+                    <h2>{{ product.name|not_null }}</h2>
+                    <h3>
+                      <span class="prise">Prise
+                      <br>
+                      </span>
+                      <span class="dollar">{{ product.cost|not_null }}&#36;</span>
+                    </h3>
+                    <form action="">
+                      {% csrf_token %}
+                      <a href="#" id="{{ product.id }}">Buy</a>
+                    </form>
+                    <p>Details</p>
+                    <ul class="details">
+                        <li>Color:<span>{{ product.color|not_null }}</span></li>
+                    </ul>
+                    {% if user.is_staff %}
+                    <a href="{% url 'product:update' pk=product.id %}">Update</a>
+                    <a href="{% url 'product:delete' pk=product.id %}">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="relation">
+                <p>{{ product.description }}</p>
+            </div>
+
+        <div class="page_js">
+          <script>
+            const url = "{% url 'cart_api:add' %}";
+            const btn = document.querySelector('.product_content a');
+
+            btn.addEventListener("click", e => {
+              api(url, "POST", {"id": +btn.id, "count": 1})
+                .then(data => { console.log(data); });
+            });
+          </script>
+        </div>
+
+        </div>
+{% endblock %}

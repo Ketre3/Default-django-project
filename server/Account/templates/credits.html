@@ -1,0 +1,45 @@
+{% extends 'base/master.html' %}
+{% load static %}
+
+{% block page_title %}
+    LOGIN
+{% endblock %}
+{% block page_style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+<form method="POST" name="update">
+  {% csrf_token %}
+  <div class="user_account">
+      <div class="avatar">
+          <div class="avatar_img">
+            <img src="{{ user.avatar.url }}" alt="your avatar">
+            <input type="file" name="avatar" id="id_avatar">
+          </div>
+      </div>
+    <div class="information">
+        <ul>
+            <li><input type="text" placeholder="Name: {{ user.first_name }}" class="yo_info"
+              id="id_first_name" name="first_name" value="{{ user.first_name }}"></li>
+            <li><input type="text" placeholder="Surname: {{ user.last_name }}" class="yo_info"
+              id="id_last_name" name="last_name" value="{{ user.last_name }}"></li>
+            <li><input type="email" placeholder="Mail: {{ user.email }}" class="yo_info"
+              id="id_email" name="email" value="{{ user.email }}"></li>
+            <input type="submit" class="buttons submit" value="Update">
+            <input type="reset" class="buttons reset" value="Reset">
+            <input type="submit" class="buttons submit" value="Log out" id="logout">
+        </ul>
+    </div>
+    <script>
+      const url = "{% url 'account:logout' %}";
+      document.getElementById('logout')
+              .addEventListener("click", e => {
+                  e.preventDefault();
+                  window.location = url;
+      });
+    </script>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base/master.html' %}
+{% load static %}
+
+{% block page_title %}INDEX{% endblock %}
+
+{% block page_style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
+    {# <script src="{% static 'js/counter.js' %}"></script> #}
+    <script src="{% static 'js/items.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/cart.js' %}" charset="utf-8"></script>
+{% endblock %}
+
+{% block page_content %}
+
+        <div class="basket_box">
+
+            <div class="header_basket">
+                <ul>
+                    <li>Goods</li>
+                    <li class="prices">Price</li>
+                    <li>Quantity</li>
+                </ul>
+            </div>
+            <div class="main_basket"></div>
+        </div>
+
+        <h1 style="color:white">Total:<span id='total' style="color:white"></span>
+        </h1>
+
+        <button type="button" name="confirm" id='confirm'>
+              <a href="#">Confirm!</a>
+        </button>
+
+    <div class="page_js">
+        <script>
+          const url = "{% url 'cart_api:total' %}";
+          const addItemUrl = "{% url 'cart_api:add' %}";
+          const deleteItemUrl = "{% url 'cart_api:delete' %}";
+          const basketBox = document.querySelector('.main_basket');
+          const totalPriceBox = document.getElementById('total');
+
+          const updateBasket = () => {
+            api(url, "GET")
+              .then(data => {
+                  basketBox.innerHTML = '';
+                  const toAppend = data.reduce((acc, cur) => {
+                              return acc + renderItem(cur);
+                            }, '');
+                  let total = data.map(item => item.total)
+                                  .reduce((acc, cur) => acc + cur);
+                  basketBox.innerHTML += toAppend;
+                  totalPriceBox.innerHTML = total;
+              })
+        }
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+          // updating basket
+          updateBasket();
+          // give arrows click event handler
+          document.querySelector('.basket_box')
+                  .addEventListener("click", e => {
+                    if (e.target.parentNode.tagName === "A") {
+                      let target = e.target.parentNode;
+                      let data = target.dataset;
+
+                      if (data.type === "delete") {
+                        api(deleteItemUrl, "POST", {"id": data.id, "count": 1})
+                              .then(() => updateBasket());
+
+
+                      } else if (data.type === "add") {
+                        api(addItemUrl, "POST", {"id": data.id, "count": 1})
+                            .then(() => updateBasket());
+                      }
+                  }
+        });
+
+        // add confirm button click event
+        document.getElementById('confirm').addEventListener("click", e => {
+          api(url, "POST")
+            .then(data => {
+              basketBox.innerHTML = "";
+              alert("CONFIRMED!");
+            });
+        });
+      });
+
+        </script>
+    </div>
+
+
+{% endblock %}

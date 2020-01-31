@@ -1,0 +1,49 @@
+{% extends 'base/master.html' %}
+{% load static %}
+
+{% block page_title %}
+    LOGIN
+{% endblock %}
+{% block page_style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700"
+          rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+
+        <div class="account">
+
+            <div class="login">
+                <h2>Login</h2>
+                <form method="POST" action="{% url 'account:login' %}">
+                    {% csrf_token %}
+                    {% for err in form.not_field_errors %}
+                        <span> {{ err }} </span>
+                    {% endfor %}
+                    {% for field in form %}
+                        {{ field }}
+                    {% endfor %}
+                    <input type="submit" value="To come in">
+                </form>
+            </div>
+
+
+            <div class="registration">
+                <h2>Registration</h2>
+                <form method="POST" action="{% url 'account:register' %}">
+                    {% csrf_token %}
+                    {% for err in register_form.not_field_errors %}
+                        <span> {{ err }} </span>
+                    {% endfor %}
+                    {% for field in register_form %}
+                        {{ field }}
+                    {% endfor %}
+                    <button type="submit" class="reg enter">Register!</button>
+                    <p>By clicking the "Register" button, you accept the terms of the
+                      <a href="#" class="confid">confidential information agreement</a></p>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}

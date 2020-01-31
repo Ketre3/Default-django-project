@@ -1,0 +1,45 @@
+{% extends 'base/master.html' %}
+{% load static %}
+
+
+{% block page_title %}
+SEARCH
+{% endblock %}
+
+
+{% block page_style %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
+{% endblock %}
+
+
+{% block page_content %}
+
+      <div class="search_box">
+        <form method="GET" name="search">
+          <input type="text" title="search" name='search'>
+          <button type="submit">search</button>
+        </form>
+      </div>
+
+
+      <div class="product">
+              {% for item in res_list %}
+          <div class="block_1">
+              <a href="{% url 'product:detail' pk=item.id %}">
+                <img src="{{ item.image.url }}" class="blazer_1"
+                alt="Suit semi-fit blazer">
+                  <p>{{ item.name }}</p>
+              </a>
+              <div class="mini_buy">
+                  <h2>{{ item.cost }}&#36;</h2>
+                  <form action="">
+                    <a href="{% url 'product:detail' pk=item.id %}"
+                      class="buy_link_little">buy</a>
+                      </form>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+
+{% endblock %}

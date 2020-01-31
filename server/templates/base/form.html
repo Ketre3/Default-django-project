@@ -1,0 +1,21 @@
+{% load static %}
+
+{% block form %}
+  <form method="POST">
+    {% csrf_token %}
+
+    {% for err in form.not_field_errors %}
+        <span> {{ err }} </span>
+    {% endfor %}
+
+    {% for field in form %}
+        {{ field }}
+    {% endfor %}
+
+    {% for err in field.errors %}
+        <small>{{ err }}</small>
+    {% endfor %}
+
+    <input type="reset">
+  </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base/master.html' %}
+{% load static %}
+
+{% block page_title %}
+     Delete {{ product.name }}
+{% endblock %}
+
+{% block page_style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block page_content %}
+    <h1 style="color: #c5d0e6">Do you want to delete {{ product.name }}?</h1>
+    <form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes!" style="width: 100px; height: 100px">
+    </form>
+{% endblock %}

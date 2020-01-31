@@ -1,0 +1,58 @@
+{% extends 'base/master.html' %}
+{% load static %}
+
+{% block page_title %}
+    INDEX
+{% endblock %}
+
+{% block page_style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+        <div class="block_product">
+
+            <div class="catalog">
+                <p>Catalog</p>
+                <ul>
+                    {% for catalog in catalogs %}
+                    <li>
+                      <a href="?catalog={{ catalog.name }}">{{ catalog.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="product">
+
+                {% for product in products %}
+                <div class="block_1">
+                      <a href="{% url 'product:detail' pk=product.id %}"></a>
+                      <img src="{{ product.image.url }}" class="blazer_1"
+                          alt="Suit semi-fit blazer">
+                        <p>{{ prod.description }}</p>
+                    </a>
+
+                    <div class="mini_buy">
+                        <h2>230&#36;</h2>
+
+                        <form action="">
+                          <a href="{% url 'product:detail' pk=product.id %}"
+                            class="buy_link_little">Detail</a>
+                          </form>
+
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+        </div>
+
+
+
+{% endblock %}
